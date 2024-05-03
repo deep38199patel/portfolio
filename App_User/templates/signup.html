@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Patel | Portfolio</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+
+    <link rel="icon" type="image/png" href="#" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container py-2">
+          <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/deep-logo.png' %}" width="100" alt="logo" /></a>
+        </div>
+      </nav>
+    </header>
+    <main class="login-container">
+      <div class="sign-container">
+          <div class="w-100">
+            {% if messages %}
+              {% for i in messages %}
+                <div class="alert alert-{{ i.tags }}" role="alert">{{ i }}</div>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <form class="form_class" method="post" id="sign-up-form" novalidate>
+            {% csrf_token %}
+            <div class="text-center">
+              <h2 class="commtitle">Sign Up</h2>
+              <span class="titlesubheading">Register as a Member to Experience.</span>
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6 form_div">
+                <label>{{ signup_form.username.label }}:</label>
+                {{ signup_form.username }}
+
+                {{ signup_form.username.errors }}
+              </div>
+              <div class="col-md-6 form_div">
+                <label>{{ signup_form.first_name.label }}:</label>
+                {{ signup_form.first_name }}
+                {{ signup_form.first_name.errors }}
+              </div>
+              <div class="col-md-6 form_div">
+                <label>{{ signup_form.last_name.label }}:</label>
+                {{ signup_form.last_name }}
+              </div>
+              <div class="col-md-6 form_div">
+                <label>{{ signup_form.email.label }}:</label>
+                {{ signup_form.email }}
+                {{ signup_form.email.errors }}
+              </div>
+              <div class="col-md-6 form_div">
+                <label>{{ signup_form.password1.label }}:</label>
+                <div class="position-relative">
+                  {{ signup_form.password1 }}
+                  <button type="button" class="btn btn-sm position-absolute end-0 top-0 eye-button" style="margin-top: 2px"><i class="far fa-eye"></i></button>
+                </div>
+                {{ signup_form.password1.errors }}
+              </div>
+              <div class="col-md-6 form_div">
+                <label>{{ signup_form.password2.label }}:</label>
+                <div class="position-relative">
+                  {{ signup_form.password2 }}
+                  <button type="button" class="btn-sm btn eye-button position-absolute end-0 top-0" style="margin-top: 2px"><i class="far fa-eye"></i></button>
+                </div>
+                {{ signup_form.password2.errors }}
+              </div>
+
+              <button class="submit_class w-50 mx-auto btn btn-dark" type="submit">Sign Up</button>
+            </div>
+            <div class="info_div">
+              <p class='mt-5 text-center'>
+                Already have an Account? <a href="{% url 'login' %}" class="blue_text_a fw-bolder">Log In!</a>
+              </p>
+            </div>
+            {{ signup_form.as_p.errors }}
+          </form>
+      </div>
+    </main>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+    <script>
+      var response = true
+      $.validator.addMethod('PasswordCheck', function (value, element) {
+        let p = element.value,
+          errors = []
+        if (p.length < 8) {
+          errors.push('Your password must be at least 8 characters')
+        }
+        if (p.search(/[A-Z]/g) < 0) {
+          errors.push('Your password must contain at least one Upper Letter.')
+        }
+        if (p.search(/[a-z]/i) < 0) {
+          errors.push('Your password must contain at least one Small Letter.')
+        }
+        if (p.search(/[0-9]/) < 0) {
+          errors.push('Your password must contain at least one digit.')
+        }
+        errors.length > 0 ? (response = false) : (response = true)
+      
+        return response
+      })
+      $.validator.addMethod('EqualPassword', function (value, element) {
+        if ($('#id_password1').val() == $('#id_password2').val()) {
+          response = true
+        } else {
+          response = false
+        }
+        return response
+      })
+      
+      $('#sign-up-form').validate({
+        rules: {
+          password1: {
+            required: true,
+            PasswordCheck: true
+          },
+          password2: {
+            required: true,
+            EqualPassword: true
+          }
+        },
+        messages: {
+          password1: {
+            required: 'This Field is Required',
+            PasswordCheck: 'Enter Valid Password'
+          },
+          password2: {
+            required: 'This Field is Required',
+            EqualPassword: 'Password Mismatch'
+          }
+        }
+      })
+      
+      $('.eye-button').click(function () {
+        if ($(this).find('i').hasClass('fa-eye-slash')) {
+          $(this).find('i').removeClass('fa-eye-slash')
+          $(this).find('i').addClass('fa-eye')
+          $(this).closest('.position-relative').find('input').attr('type', 'password')
+        } else {
+          $(this).find('i').removeClass('fa-eye')
+          $(this).find('i').addClass('fa-eye-slash')
+          $(this).closest('.position-relative').find('input').attr('type', 'text')
+        }
+      })
+    </script>
+  </body>
+</html>

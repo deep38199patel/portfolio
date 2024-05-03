@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Patel | Portfolio</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+
+    <link rel="icon" type="image/png" href="#" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container py-2">
+          <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/deep-logo.png' %}" width="100" alt="logo" /></a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="login-container">
+      <form id="login_form" class="form_class form-container needs-validation" action="" method="post" novalidate>
+        {% csrf_token %}
+        <div class="text-center">
+          <h2 class="commtitle">Login</h2>
+          <span class="titlesubheading">Hi, Welcome back &#128075;</span>
+        </div>
+        <div>{{ signIn_form.non_field_errors }}</div>
+
+        <div class="form_div">
+          <div class="form_div">
+            <label class="w-100">{{ signIn_form.username.label }}:</label>
+          </div>
+          <div style="margin-bottom: 25px; margin-top: 5px">
+            {{ signIn_form.username }}
+            {{ signIn_form.username.errors }}
+          </div>
+          <label>{{ signIn_form.password.label }}:</label>
+          <div style="margin-bottom: 25px; margin-top: 5px">
+            {{ signIn_form.password }}
+            {{ signIn_form.password.errors }}
+          </div>
+          <button class="submit_class w-100 btn btn-dark" type="submit">Log in</button>
+        </div>
+        <div class="info_div">
+          <p class='mt-5 text-center'>
+            Not registered yet? <a href="{% url 'signup' %}" class="text-primary blue_text_a fw-bolder">Create an account!</a>
+          </p>
+        </div>
+      </form>
+    </main>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+    <script>
+      $('#login_form').validate()
+    </script>
+  </body>
+</html>

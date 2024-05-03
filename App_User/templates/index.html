@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deep Patel | Portfolio</title>
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+
+  <link rel="icon" type="image/png" href="#" />
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container py-2">
+        <a class="navbar-brand" href="#home"><img src="{% static 'images/deep-logo.png' %}" width="100"
+            alt="logo" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+          aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav gap-4 ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact Us</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login/Signup</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="main-content">
+    <section class="section hero text-center" id="home">
+      <h1 class="hero-name">Deep Patel</h1>
+      <span class="titlesubheading mb-5"></span>
+      <h6 class="designation">Cyber Security Aspirant | Front End Developer | UX/UI Design | Graphic Design</h6>
+      <div class="text-center">
+        <a href="javascript:void(0)" type="button" class="btn btn-outline-dark">Download Brochure</a>
+      </div>
+    </section>
+    <section class="section portfolio" id="portfolio">
+      <div class="container">
+        <div class="grid">
+          <div class="grid-col-1">
+            <img src="{% static 'images/evol-group.jpeg' %}" class="img-fluid" alt="work" />
+            <div class="bod">
+              <h6 class="title">Evol Group</h6>
+            </div>
+          </div>
+          <div class="grid-col-1">
+            <img src="{% static 'images/k-group.jpeg' %}" class="img-fluid" alt="work" />
+            <div class="bod">
+              <h6 class="title">K Group</h6>
+            </div>
+          </div>
+          <div class="grid-col-1">
+            <img src="{% static 'images/marketrill.png' %}" class="img-fluid" alt="work" />
+            <div class="bod">
+              <h6 class="title">Marketrill</h6>
+            </div>
+          </div>
+          <div class="grid-col-1">
+            <img src="{% static 'images/evol-network.jpeg' %}" class="img-fluid" alt="work" />
+            <div class="bod">
+              <h6 class="title">Evol Network</h6>
+            </div>
+          </div>
+          <div class="grid-col-1">
+            <img src="{% static 'images/demo-work.png' %}" class="img-fluid" alt="work" />
+            <div class="bod">
+              <h6 class="title">Website layout</h6>
+            </div>
+          </div>
+          <div class="grid-col-1">
+            <img src="{% static 'images/migrate-zone.webp' %}" class="img-fluid" alt="work" />
+            <div class="bod">
+              <h6 class="title">Migrate Zone</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="max-800">
+          <div class="text-center">
+            <img src="{% static 'images/self-photo.png' %}" class="profile-pic" />
+          </div>
+
+          <h2 class="self-name">Deep Patel</h2>
+
+          <span class="designation">Cyber Security Aspirant | Front End Developer | UX/UI Design | Graphic Design</span>
+
+          <div class="content-bio mb-5">
+            <p>I'm a creative and motivated individual with a diverse range of skills and interests. As an entry-level
+              graphic designer, I possess a passion for crafting visually appealing and effective designs, leveraging
+              their proficiency in Adobe Creative Suite and familiarity with other design software like Sketch and
+              Figma. Their ability to conceptualize and execute graphic designs from start to finish makes them a
+              valuable asset to any design team.</p>
+
+            <p>Beyond my design expertise, I harbors a keen interest in cybersecurity, actively seeking opportunities to
+              broaden their knowledge in cybersecurity principles and practices. They aspire to contribute to a
+              cybersecurity team, safeguarding against cyber threats and vulnerabilities.</p>
+
+            <p>My passion for user experience extends to UX/UI design, where my understanding of UX/UI design
+              methodologies and principles, such as user research, prototyping, and usability testing, enables them to
+              create user interfaces that are both visually appealing and functional.</p>
+
+            <p>My technical skills also encompass front-end development, with proficiency in HTML, CSS, and JavaScript.
+              I possesses experience in building and maintaining responsive and user-friendly websites and web
+              applications, demonstrating their ability to collaborate with designers and back-end developers to create
+              seamless and functional digital products.</p>
+
+            <p>My diverse skillset and unwavering passion for creativity and technology make them a versatile individual
+              poised to make significant contributions in the ever-evolving digital landscape.</p>
+          </div>
+
+          <div class="text-center">
+            <a href="javascript:void(0)" type="button" class="btn btn-outline-dark">Download Brochure</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="commtitle">Services</h2>
+          <span class="titlesubheading">What I bring to the Table.</span>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img src="{% static 'images/web.png' %}" alt="web design" width="80" />
+              <h3 class="mb-3">Web Design</h3>
+              <p>Create and maintain effective websites. Planning and strategizing to developing and maintaining the
+                site.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img src="{% static 'images/grphic.png' %}" alt="web design" width="80" />
+              <h3 class="mb-3">Graphic Design</h3>
+              <p>Create visually appealing and effective designs. Create a variety of different materials, such as
+                logos, brochures, websites, and advertisements.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img src="{% static 'images/ui-ux.png' %}" alt="web design" width="80" />
+              <h3 class="mb-3">UX / UI Design</h3>
+              <p>Creating user-centered and visually appealing digital products. Services cover the entire spectrum of
+                user interaction, from understanding user needs and preferences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section skillset">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="commtitle">My Skillset</h2>
+          <span class="titlesubheading">My professional toolbox is brimming with expertise.</span>
+        </div>
+
+        <div class="row mx-0">
+          <div class="col-md-4">
+            <div class="circular-card">
+              <div class="percent">
+                <svg>
+                  <circle cx="105" cy="105" r="100"></circle>
+                  <circle cx="105" cy="105" r="100" style="--percent: 86"></circle>
+                </svg>
+                <div class="number">
+                  <h3>86<span>%</span></h3>
+                </div>
+              </div>
+              <div class="title">
+                <h2>Adobe Creative Studio</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="circular-card">
+              <div class="percent">
+                <svg>
+                  <circle cx="105" cy="105" r="100"></circle>
+                  <circle cx="105" cy="105" r="100" style="--percent: 90"></circle>
+                </svg>
+                <div class="number">
+                  <h3>90<span>%</span></h3>
+                </div>
+              </div>
+              <div class="title">
+                <h2>Figma</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="circular-card">
+              <div class="percent">
+                <svg>
+                  <circle cx="105" cy="105" r="100"></circle>
+                  <circle cx="105" cy="105" r="100" style="--percent: 76"></circle>
+                </svg>
+                <div class="number">
+                  <h3>76<span>%</span></h3>
+                </div>
+              </div>
+              <div class="title">
+                <h2>Visual Studio Code</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section testimonials">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="commtitle">Testimonials</h2>
+          <span class="titlesubheading">What clients say...</span>
+        </div>
+
+        <div class="owl-carousel owl-theme testimonial-carousel">
+          <div class="item">
+            <div class="testimonial-card">
+              <img src="{% static 'images/person_3.jpg' %}" width="100" height="100" class="review-image" />
+              <h3>Susan M</h3>
+              <span class="caption">Activist</span>
+              <p>Deep is a creative and innovative UX/UI designer who is always looking for new and better ways to
+                improve the user experience. They are not afraid to experiment, and they are always open to feedback. I
+                highly recommend Deep to anyone looking for a UX/UI designer who can deliver exceptional results.</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testimonial-card">
+              <img src="{% static 'images/person_3.jpg' %}" width="100" height="100" class="review-image" />
+              <h3>Susan M</h3>
+              <span class="caption">Activist</span>
+              <p>Deep is a creative and innovative UX/UI designer who is always looking for new and better ways to
+                improve the user experience. They are not afraid to experiment, and they are always open to feedback. I
+                highly recommend Deep to anyone looking for a UX/UI designer who can deliver exceptional results.</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testimonial-card">
+              <img src="{% static 'images/person_3.jpg' %}" width="100" height="100" class="review-image" />
+              <h3>Susan M</h3>
+              <span class="caption">Activist</span>
+              <p>Deep is a creative and innovative UX/UI designer who is always looking for new and better ways to
+                improve the user experience. They are not afraid to experiment, and they are always open to feedback. I
+                highly recommend Deep to anyone looking for a UX/UI designer who can deliver exceptional results.</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testimonial-card">
+              <img src="{% static 'images/person_3.jpg' %}" width="100" height="100" class="review-image" />
+              <h3>Susan M</h3>
+              <span class="caption">Activist</span>
+              <p>Deep is a creative and innovative UX/UI designer who is always looking for new and better ways to
+                improve the user experience. They are not afraid to experiment, and they are always open to feedback. I
+                highly recommend Deep to anyone looking for a UX/UI designer who can deliver exceptional results.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section contact-form" id="contact">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="commtitle">Contact</h2>
+          <span class="titlesubheading">Available for work. Get in touch</span>
+        </div>
+
+        <div class="row mx-0 g-4">
+          <div class="col-md-6">
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="alert alert-{{ msg.tags }} py-2" role="alert">{{ msg }}</div>
+            {% endfor %}
+            {% endif %}
+            <form class="contact-form needs-validation" method="post" novalidate>
+              {% csrf_token %}
+              <div class="row g-4">
+                <div class="col-md-6">{{ contact_form.sender_firstname }}
+                  {{ contact_form.sender_firstname.errors }}</div>
+                <div class="col-md-6">{{ contact_form.sender_lastname }}
+                  {{ contact_form.sender_lastname.errors }}</div>
+                <div class="col-md-12">{{ contact_form.sender_email }}
+                  {{ contact_form.sender_email.errors }}</div>
+                <div class="col-md-12">{{ contact_form.message }}
+                  {{ contact_form.message.errors }}</div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-dark">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d152515.6931206764!2d-6.245704099999999!3d53.324320099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e80ea27ac2f%3A0xa00c7a9973171a0!2sDublin%2C%20Ireland!5e0!3m2!1sen!2sin!4v1713469960387!5m2!1sen!2sin"
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h6 class="footer-title">Home</h6>
+          <ul class="navbox">
+            <li>
+              <a href="#portfolio">Portfolio</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#services">Services</a>
+            </li>
+            <li>
+              <a href="#contact">Contact us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="footer-title">Social</h6>
+          <ul class="navbox">
+            <li>
+              <a href="javascript:void(0)">Instagram</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">LinkedIn</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Whatsapp</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Youtube</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="footer-title">Services</h6>
+          <ul class="navbox">
+            <li>
+              <a href="#services">Web Design</a>
+            </li>
+            <li>
+              <a href="#services">Graphic Design</a>
+            </li>
+            <li>
+              <a href="#services">UX / UI Design</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="footer-title">Contact</h6>
+          <ul class="navbox">
+            <li>
+              Dublin, Ireland <br />Kochi, India
+            </li>
+            <li>
+              <a href="tel:+91 1234567890">+91 1234567890</a>
+            </li>
+            <li>
+              <a href="mailto:info@gmail.com">info@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <span class="copyrighttext">Copyright ©2024. All Rights Reserved — Designed by Deep</span>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/all.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+  <script>
+    $('.testimonial-carousel').owlCarousel({
+      loop: true,
+      margin: 50,
+      nav: true,
+      navText: ['<i class="fa-solid fa-arrow-left-long"></i>', '<i class="fa-solid fa-arrow-right-long"></i>'],
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 2
+        },
+        1200: {
+          items: 3
+        }
+      }
+    })
+
+    $(document).ready(function () {
+      $('.form-control').change(function () {
+        $(this).next('.errorlist').remove()
+      })
+    })
+  </script>
+</body>
+
+</html>

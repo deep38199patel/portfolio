@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Patel | Portfolio</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+
+    <link rel="icon" type="image/png" href="#" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container py-2">
+          <a class="navbar-brand" href="/#home"><img src="{% static 'images/deep-logo.png' %}" width="100" alt="logo" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav gap-4 ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#portfolio">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#services">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#contact">Contact Us</a>
+              </li>
+              {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login/Signup</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+
+      <div class="container pt-5">
+
+        <div class="row g-4 mx-0">
+          <div class="col-md-12">
+            <div class="profile-side">
+              <img src="{% static 'images/person_3.jpg' %}" width="160" height="160" class="" />
+              <div>
+                <h2 class="self-name">{{ user.first_name }} {{ user.last_name }}</h2>
+                <span class="designation">Cyber Security Aspirant | {{ user.email }}</span>
+                <form method="post">
+                  {% csrf_token %}
+                  <input name="action" value="sign-out" hidden>
+                  <button type="submit" class="btn btn-outline-primary py-2"><i class="fa-solid fa-right-from-bracket me-3"></i>Sign Out</button>
+              </form>
+              </div>
+            </div>
+
+            {% if messages %}
+              {% for msg in messages %}
+                <div class="alert alert-{{ msg.tags }} py-2 mt-4 mb-0" role="alert">{{ msg }}</div>
+              {% endfor %}
+            {% endif %}
+          </div>
+         
+          {% if pass_action %}
+          <div class="col-md-8">
+           
+            <div class="content-side">
+              <form class="contact-form needs-validation" method="post" novalidate>
+                {% csrf_token %}
+                <input name="action" value="update-contact" hidden>
+                <input name="contact_id" value={{ contact_id }} hidden>
+                <div class="row g-4">
+                  <div class="col-md-6">{{ contact_form.sender_firstname }}
+                    {{ contact_form.sender_firstname.errors }}</div>
+                  <div class="col-md-6">{{ contact_form.sender_lastname }}
+                    {{ contact_form.sender_lastname.errors }}</div>
+                  <div class="col-md-12">{{ contact_form.sender_email }}
+                    {{ contact_form.sender_email.errors }}</div>
+                  <div class="col-md-12">{{ contact_form.message }}
+                    {{ contact_form.message.errors }}</div>
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-dark me-4">Update Query</button>
+                    <a href={% url 'profile' %} type="button" class="btn btn-outline-dark">Cancle</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+           
+          </div>
+          {% endif %}
+          <div class="col-md-12">
+              <div class="content-side">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if not user.is_superuser %} active {% endif %}" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="true">About</button>
+                  </li>
+                  {% if user.is_superuser %}
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if user.is_superuser %} active {% endif %}" id="support-tab" data-bs-toggle="tab" data-bs-target="#support" type="button" role="tab" aria-controls="support" aria-selected="false">Support</button>
+                  </li>
+                  {% endif %}
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade pt-4 {% if not user.is_superuser %} show active {% endif %}" id="about" role="tabpanel">
+                    <p>I'm a creative and motivated individual with a diverse range of skills and interests. As an entry-level graphic designer, I possess a passion for crafting visually appealing and effective designs, leveraging their proficiency in Adobe Creative Suite and familiarity with other design software like Sketch and Figma. Their ability to conceptualize and execute graphic designs from start to finish makes them a valuable asset to any design team.</p>
+
+                    <p>Beyond my design expertise, I harbors a keen interest in cybersecurity, actively seeking opportunities to broaden their knowledge in cybersecurity principles and practices. They aspire to contribute to a cybersecurity team, safeguarding against cyber threats and vulnerabilities.</p>
+
+                    <p>My passion for user experience extends to UX/UI design, where my understanding of UX/UI design methodologies and principles, such as user research, prototyping, and usability testing, enables them to create user interfaces that are both visually appealing and functional.</p>
+
+                    <p>My technical skills also encompass front-end development, with proficiency in HTML, CSS, and JavaScript. I possesses experience in building and maintaining responsive and user-friendly websites and web applications, demonstrating their ability to collaborate with designers and back-end developers to create seamless and functional digital products.</p>
+
+                    <p>My diverse skillset and unwavering passion for creativity and technology make them a versatile individual poised to make significant contributions in the ever-evolving digital landscape.</p>
+                  </div>
+                  {% if user.is_superuser %}
+                  <div class="tab-pane fade pt-4 {% if user.is_superuser %} show active {% endif %}" id="support" role="tabpanel">
+                    {% if ContactList %}
+                    <div class="responsive">
+                    <table class="table-box">
+                      <thead>
+                        <tr>
+                          <th>No.</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Message</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                   
+                        {% for contactitem in ContactList %}
+                        <tr>
+                          <td>{{ forloop.counter }}</td>
+                          <td> {{ contactitem.sender_firstname }}  {{ contactitem.sender_lastname }}</td>
+                          <td> {{ contactitem.sender_email }}</td>
+                          <td> {{ contactitem.message }}!</td>
+                          <td>
+                            <div class="d-inline-flex align-items-center gap-3 action-btn">
+                              <form method="post">
+                                {% csrf_token %}
+                                <input name="action" value="update-contact" hidden>
+                                <input name="contact_id" value={{ contactitem.id }} hidden>
+                                <input name="fetch_form" value="fetch_form" hidden>
+                                <button type="submit" class="btn btn-outline-dark py-1 px-3"><i class="fa-regular fa-pen-to-square"></i></button>
+                              </form>
+                              <form method="post">
+                                {% csrf_token %}
+                                <input name="action" value="delete-contact" hidden>
+                                <input name="contact_id" value={{ contactitem.id }} hidden>
+                                <button type="submit" class="btn btn-outline-dark py-1 px-3"><i class="fa-regular fa-trash-can"></i></button>
+                              </form>
+                            </div>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                    
+                      </tbody>
+                    </table>
+                  </div>
+                    {% else %}
+                    <p class="py-2 mb-4">Users don't have any questions for you.</p>
+                    {% endif %}
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="margin-top-20 profile-desc-link">
+         
+        </div>
+      </div>
+
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h6 class="footer-title">Home</h6>
+            <ul class="navbox">
+              <li>
+                <a href="#portfolio">Portfolio</a>
+              </li>
+              <li>
+                <a href="#about">About</a>
+              </li>
+              <li>
+                <a href="#services">Services</a>
+              </li>
+              <li>
+                <a href="#contact">Contact us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h6 class="footer-title">Social</h6>
+            <ul class="navbox">
+              <li>
+                <a href="#">Instagram</a>
+              </li>
+              <li>
+                <a href="#">LinkedIn</a>
+              </li>
+              <li>
+                <a href="#">Whatsapp</a>
+              </li>
+              <li>
+                <a href="#">Youtube</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h6 class="footer-title">Services</h6>
+            <ul class="navbox">
+              <li>
+                <a href="#services">Web Design</a>
+              </li>
+              <li>
+                <a href="#services">Graphic Design</a>
+              </li>
+              <li>
+                <a href="#services">UX / UI Design</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h6 class="footer-title">Contact</h6>
+            <ul class="navbox">
+              <li>
+                Dublin, Ireland <br />Kochi, India
+              </li>
+              <li>
+                <a href="tel:+91 1234567890">+91 1234567890</a>
+              </li>
+              <li>
+                <a href="mailto:info@gmail.com">info@gmail.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <span class="copyrighttext">Copyright ©2024. All Rights Reserved — Designed by Deep</span>
+      </div>
+    </footer>
+
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/all.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
+
+  </body>
+</html>
