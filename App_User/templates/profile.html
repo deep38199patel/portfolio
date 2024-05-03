@@ -117,7 +117,7 @@
                   {% endif %}
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                  <div class="tab-pane fade pt-4 {% if not user.is_superuser %} show active {% endif %}" id="about" role="tabpanel">
+                  {% comment %} <div class="tab-pane fade pt-4 {% if not user.is_superuser %} show active {% endif %}" id="about" role="tabpanel">
                     <p>I'm a creative and motivated individual with a diverse range of skills and interests. As an entry-level graphic designer, I possess a passion for crafting visually appealing and effective designs, leveraging their proficiency in Adobe Creative Suite and familiarity with other design software like Sketch and Figma. Their ability to conceptualize and execute graphic designs from start to finish makes them a valuable asset to any design team.</p>
 
                     <p>Beyond my design expertise, I harbors a keen interest in cybersecurity, actively seeking opportunities to broaden their knowledge in cybersecurity principles and practices. They aspire to contribute to a cybersecurity team, safeguarding against cyber threats and vulnerabilities.</p>
@@ -127,7 +127,7 @@
                     <p>My technical skills also encompass front-end development, with proficiency in HTML, CSS, and JavaScript. I possesses experience in building and maintaining responsive and user-friendly websites and web applications, demonstrating their ability to collaborate with designers and back-end developers to create seamless and functional digital products.</p>
 
                     <p>My diverse skillset and unwavering passion for creativity and technology make them a versatile individual poised to make significant contributions in the ever-evolving digital landscape.</p>
-                  </div>
+                  </div> {% endcomment %}
                   {% if user.is_superuser %}
                   <div class="tab-pane fade pt-4 {% if user.is_superuser %} show active {% endif %}" id="support" role="tabpanel">
                     {% if ContactList %}
@@ -244,7 +244,7 @@
             <h6 class="footer-title">Contact</h6>
             <ul class="navbox">
               <li>
-                Dublin, Ireland <br />Kochi, India
+                Dublin, Ireland <br />Gujarat, India
               </li>
               <li>
                 <a href="tel:+91 1234567890">+91 1234567890</a>
